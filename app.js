@@ -30,7 +30,7 @@ http.createServer(app).listen(app.get("port"), function() {
 });
 
 app.get("/", function(req, res) {
-  res.render("Home/Index"); // load the index.ejs file
+  res.render("./Views/Home/Index"); // load the index.ejs file
 });
 
 // This is placed last in series of request handlers

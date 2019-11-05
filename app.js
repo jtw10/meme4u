@@ -7,7 +7,7 @@ var bodyParser = require("body-parser");
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Enable routing and use port 1337.
+// Enable routing and use port 3000.
 require("./router")(app);
 app.listen(process.env.PORT || 3000, function() {
   console.log(
@@ -20,15 +20,12 @@ app.listen(process.env.PORT || 3000, function() {
 // Set up ejs templating.
 app.engine("ejs", engine);
 app.set("view engine", "ejs");
+
+// Set path for views
 app.set("views", path.join(__dirname, "Views"));
 
 // Allow linking to static files
 app.use(express.static(path.join(__dirname, "static")));
-
-// Confirmation message
-http.createServer(app).listen(app.get("port"), function() {
-  console.log("Express server listening on port " + app.get("port"));
-});
 
 app.get("/", function(req, res) {
   res.render("Home/Index"); // load the index.ejs file

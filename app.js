@@ -20,6 +20,7 @@ app.listen(process.env.PORT || 3000, function() {
 // Set up ejs templating.
 app.engine("ejs", engine);
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "Views"));
 
 // Allow linking to static files
 app.use(express.static(path.join(__dirname, "static")));
@@ -30,7 +31,7 @@ http.createServer(app).listen(app.get("port"), function() {
 });
 
 app.get("/", function(req, res) {
-  res.render("./Views/Home/Index"); // load the index.ejs file
+  res.render("Home/Index"); // load the index.ejs file
 });
 
 // This is placed last in series of request handlers

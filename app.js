@@ -29,6 +29,10 @@ http.createServer(app).listen(app.get("port"), function() {
   console.log("Express server listening on port " + app.get("port"));
 });
 
+app.get("/", function(req, res) {
+  res.render("Home/Index"); // load the index.ejs file
+});
+
 // This is placed last in series of request handlers
 app.get("*", function(request, response) {
   response.send("Error: Page does not exist.");

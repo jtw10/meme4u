@@ -9,7 +9,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Enable routing and use port 1337.
 require("./router")(app);
-app.set("port", 3000);
+app.listen(process.env.PORT || 3000, function() {
+  console.log(
+    "Express server listening on port %d in %s mode",
+    this.address().port,
+    app.settings.env
+  );
+});
 
 // Set up ejs templating.
 app.engine("ejs", engine);
